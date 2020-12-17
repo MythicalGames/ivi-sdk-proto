@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.order.rpc";
+
+package IVISDK.Api.Order.RPC;
+
+import "google/protobuf/empty.proto";
+import "api/order/message.proto";
+
+service OrderService {
+  rpc CreateOrder(IVISDK.Api.Order.Message.CreateOrderRequest) returns (IVISDK.Api.Order.Message.Order);
+  rpc GetOrder(IVISDK.Api.Order.Message.GetOrderRequest) returns (IVISDK.Api.Order.Message.Order);
+}

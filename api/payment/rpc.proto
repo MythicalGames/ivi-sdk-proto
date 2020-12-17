@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.payment.rpc";
+
+package IVISDK.Api.Payment.RPC;
+
+import "api/payment/message.proto";
+
+service PaymentService {
+  rpc FinalizePayment(IVISDK.Api.Payment.Message.FinalizePaymentRequest) returns (IVISDK.Api.Payment.Message.FinalizePaymentResponse);
+}

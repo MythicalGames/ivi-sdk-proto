@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.common.player";
+
+package IVISDK.Common.Player.Message;
+
+enum PlayerState {
+  PENDING_CREATED = 0;
+  CREATED  = 1;
+  FAILED = 2;
+}

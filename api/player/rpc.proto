@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.player.rpc";
+
+import "common/player/message.proto";
+import "api/player/message.proto";
+
+package IVISDK.Api.Player.RPC;
+
+service PlayerService {
+  rpc LinkPlayer(IVISDK.Api.Player.Message.LinkPlayerRequest) returns (IVISDK.Api.Player.Message.LinkPlayerAsyncResponse);
+  rpc GetPlayer(IVISDK.Api.Player.Message.GetPlayerRequest) returns (IVISDK.Api.Player.Message.IVIPlayer);
+  rpc GetPlayers(IVISDK.Api.Player.Message.GetPlayersRequest) returns (IVISDK.Api.Player.Message.IVIPlayers);
+}

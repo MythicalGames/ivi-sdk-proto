@@ -1,0 +1,94 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.item.message";
+
+import "google/protobuf/struct.proto";
+import "common/item/message.proto";
+
+package IVISDK.Api.Item.Message;
+
+// Item definitions
+message Item {
+  string item_id = 1;
+  string category = 2;
+  string token_name = 3;
+  string game_inventory_id = 4;
+  int64 dgood_id = 5;
+  string item_name = 6;
+  string player_id = 7;
+  string owner_sidechain_account = 8;
+  int32 serial_number = 9;
+  string amount_paid = 10;
+  string currency = 11;
+  string amount_paid_base = 12;
+  string currency_base = 13;
+  string transaction_id = 14;
+  IVISDK.Common.Item.Message.ItemState item_state = 15;
+}
+
+message Items {
+  repeated Item items = 1;
+}
+
+// Issue item call
+message IssueItemRequest {
+  string environment_id = 1;
+  string game_inventory_id = 2;
+  string player_id = 3;
+  string item_name = 4;
+  string token_name = 5;
+  google.protobuf.Struct additional_metadata = 6;
+  string amount_paid = 7;
+  string currency = 8;
+}
+
+message IssueItemStartedResponse {
+  string tracking_id = 1;
+  IVISDK.Common.Item.Message.ItemState item_state = 2;
+}
+
+// Get item calls
+message GetItemRequest {
+  string environment_id = 1;
+  string item_id = 2;
+}
+
+message GetItemsRequest {
+  string environment_id = 1;
+  repeated string item_ids = 2;
+}
+
+message GetItemsForPlayerRequest {
+  string environment_id = 1;
+  string player_id = 2;
+}
+
+// Metadata calls
+
+
+// Transfer item call
+message TransferGameItemRequest {
+  string environment_id = 1;
+  string game_item_inventory_id = 2;
+  string source_player_id = 3;
+  string destination_player_id = 4;
+  string memo = 5;
+  string new_game_inventory_id = 6;
+}
+
+message TransferItemStartedResponse {
+  string tracking_id = 1;
+  IVISDK.Common.Item.Message.ItemState item_state = 2;
+}
+
+// Burn item call
+message BurnItemRequest {
+  string environment_id = 1;
+  string game_item_inventory_id = 2;
+}
+
+message BurnItemStartedResponse {
+  string tracking_id = 1;
+  IVISDK.Common.Item.Message.ItemState item_state = 2;
+}

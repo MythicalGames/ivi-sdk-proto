@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.streams.player";
+
+import "google/protobuf/empty.proto";
+import "streams/common.proto";
+import "common/player/message.proto";
+
+package IVISDK.Streams.Player;
+
+message PlayerStatusUpdate {
+  string player_id = 1;
+  string transaction_id = 2;
+  IVISDK.Common.Player.Message.PlayerState player_state = 3;
+}
+
+message PlayerStatusConfirmRequest {
+  string player_id = 1;
+  string transaction_id = 2;
+}
+
+service PlayerStream {
+  rpc PlayerStatusStream(Streams.Common.Subscribe) returns (stream PlayerStatusUpdate);
+  rpc PlayerStatusConfirmation(PlayerStatusConfirmRequest) returns (google.protobuf.Empty);
+}
