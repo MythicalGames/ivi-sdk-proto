@@ -5,9 +5,9 @@ option java_package = "games.mythical.ivi.sdk.proto.streams.item";
 
 import "google/protobuf/empty.proto";
 import "streams/common.proto";
-import "common/item/message.proto";
+import "common/item/definition.proto";
 
-package IVISDK.Streams.Item;
+package streams.item;
 
 message ItemStatusUpdate {
   string environment_id = 1;
@@ -17,17 +17,17 @@ message ItemStatusUpdate {
   string serial_number = 5;
   string token_name = 6;
   string metadata_uri = 7;
-  string transaction_id = 8;
-  IVISDK.Common.Item.Message.ItemState item_state = 9;
+  string tracking_id = 8;
+  common.item.ItemState item_state = 9;
 }
 
 message ItemStatusConfirmRequest {
   string environment_id = 1;
   string dGoods_id = 2;
-  string transaction_id = 3;
+  string tracking_id = 3;
 }
 
 service ItemStream {
-  rpc ItemStatusStream(Streams.Common.Subscribe) returns (stream ItemStatusUpdate);
+  rpc ItemStatusStream(streams.Subscribe) returns (stream ItemStatusUpdate);
   rpc ItemStatusConfirmation(ItemStatusConfirmRequest) returns (google.protobuf.Empty);
 }

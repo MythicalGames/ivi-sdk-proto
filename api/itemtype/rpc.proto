@@ -1,16 +1,14 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.itemtype.rpc";
+option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
 
-import "common/itemtype/message.proto";
-import "api/itemtype/message.proto";
+import "api/itemtype/definition.proto";
 
-package IVISDK.Api.ItemType.RPC;
+package api.itemtype;
 
 service ItemTypeService {
-  rpc CreateItemType(IVISDK.Api.ItemType.Message.CreateItemTypeRequest) returns (IVISDK.Api.ItemType.Message.CreateItemAsyncResponse);
-  rpc GetItemType(IVISDK.Api.ItemType.Message.GetItemTypeRequest) returns (IVISDK.Api.ItemType.Message.ItemType);
-  rpc GetItemsType(IVISDK.Api.ItemType.Message.GetItemTypesRequest) returns (IVISDK.Api.ItemType.Message.ItemTypes);
-  rpc FreezeItemType(IVISDK.Api.ItemType.Message.FreezeItemTypeRequest) returns (IVISDK.Api.ItemType.Message.FreezeItemTypeAsyncResponse);
+  rpc CreateItemType(api.itemtype.CreateItemTypeRequest) returns (api.itemtype.CreateItemAsyncResponse);
+  rpc GetItemTypes(api.itemtype.GetItemTypesRequest) returns (api.itemtype.ItemTypes);
+  rpc FreezeItemType(api.itemtype.FreezeItemTypeRequest) returns (api.itemtype.FreezeItemTypeAsyncResponse);
 }

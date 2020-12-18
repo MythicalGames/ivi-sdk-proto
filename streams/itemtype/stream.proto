@@ -1,13 +1,13 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.streams.item.create";
+option java_package = "games.mythical.ivi.sdk.proto.streams.itemtype";
 
 import "google/protobuf/empty.proto";
 import "streams/common.proto";
-import "common/itemtype/message.proto";
+import "common/itemtype/definition.proto";
 
-package IVISDK.Streams.ItemType;
+package streams.itemtype;
 
 message ItemTypeStatusUpdate {
   string item_type_id = 1;
@@ -15,19 +15,16 @@ message ItemTypeStatusUpdate {
   int32 issued_supply = 3;
   string base_uri = 4;
   int32 issue_time_span = 5;
-  string transaction_id = 6;
-  IVISDK.Common.ItemType.Message.ItemTypeState item_type_state = 7;
+  string tracking_id = 6;
+  common.itemtype.ItemTypeState item_type_state = 7;
 }
 
 message ItemTypeStatusConfirmRequest {
   string item_type_id = 1;
-  string transaction_id = 2;
+  string tracking_id = 2;
 }
 
 service ItemTypeStatusStream {
-  rpc ItemTypeStatusStream(Streams.Common.Subscribe) returns (stream ItemTypeStatusUpdate);
+  rpc ItemTypeStatusStream(streams.Subscribe) returns (stream ItemTypeStatusUpdate);
   rpc ItemTypeStatusConfirmation(ItemTypeStatusConfirmRequest) returns (google.protobuf.Empty);
 }
-
-
-    

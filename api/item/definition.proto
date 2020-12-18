@@ -1,12 +1,12 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.item.message";
+option java_package = "games.mythical.ivi.sdk.proto.api.item";
 
 import "google/protobuf/struct.proto";
-import "common/item/message.proto";
+import "common/item/definition.proto";
 
-package IVISDK.Api.Item.Message;
+package api.item;
 
 // Item definitions
 message Item {
@@ -23,8 +23,8 @@ message Item {
   string currency = 11;
   string amount_paid_base = 12;
   string currency_base = 13;
-  string transaction_id = 14;
-  IVISDK.Common.Item.Message.ItemState item_state = 15;
+  string tracking_id = 14;
+  common.item.ItemState item_state = 15;
 }
 
 message Items {
@@ -45,7 +45,7 @@ message IssueItemRequest {
 
 message IssueItemStartedResponse {
   string tracking_id = 1;
-  IVISDK.Common.Item.Message.ItemState item_state = 2;
+  common.item.ItemState item_state = 2;
 }
 
 // Get item calls
@@ -79,7 +79,7 @@ message TransferGameItemRequest {
 
 message TransferItemStartedResponse {
   string tracking_id = 1;
-  IVISDK.Common.Item.Message.ItemState item_state = 2;
+  common.item.ItemState item_state = 2;
 }
 
 // Burn item call
@@ -90,5 +90,5 @@ message BurnItemRequest {
 
 message BurnItemStartedResponse {
   string tracking_id = 1;
-  IVISDK.Common.Item.Message.ItemState item_state = 2;
+  common.item.ItemState item_state = 2;
 }

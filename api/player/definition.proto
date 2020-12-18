@@ -1,19 +1,19 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.player.message";
+option java_package = "games.mythical.ivi.sdk.proto.api.player";
 
-import "common/player/message.proto";
+import "common/player/definition.proto";
 
-package IVISDK.Api.Player.Message;
+package api.player;
 
 // Player definitions
 message IVIPlayer {
   string player_id = 1;
   string ivi_user_id = 2;
   string sidechain_account_name = 3;
-  string transaction_id = 4;
-  IVISDK.Common.Player.Message.PlayerState player_state = 5;
+  string tracking_id = 4;
+  common.player.PlayerState player_state = 5;
 }
 
 message IVIPlayers {
@@ -29,7 +29,7 @@ message LinkPlayerRequest {
 
 message LinkPlayerAsyncResponse {
   string tracking_id = 1;
-  IVISDK.Common.Player.Message.PlayerState player_state = 2;
+  common.player.PlayerState player_state = 2;
 }
 
 // Get player calls

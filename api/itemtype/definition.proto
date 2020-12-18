@@ -1,32 +1,34 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.itemtype.message";
+option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
 
-import "common/itemtype/message.proto";
+import "common/itemtype/definition.proto";
 
-package IVISDK.Api.ItemType.Message;
+package api.itemtype;
 
 // Item type definitions
 message ItemType {
     string environment_id = 1;
     string item_type_id = 2;
-    int32 max_supply = 3;
-    int32 current_supply = 4;
-    int32 issued_supply = 5;
-    string issuer = 6;
-    int32 issue_time_span = 7;
-    string category = 8;
-    string token_name = 9;
-    bool fungible = 10;
-    bool burnable = 11;
-    bool transferable = 12;
-    bool finalized = 13;
-    bool sellable = 14;
-    string base_uri = 15;
-    string transaction_id = 16;
-    repeated string agreement_ids = 17;
-    IVISDK.Common.ItemType.Message.ItemTypeState item_type_state = 18;
+    string description = 3;
+    int32 max_supply = 4;
+    int32 current_supply = 5;
+    int32 issued_supply = 6;
+    string issuer = 7;
+    int32 issue_time_span = 8;
+    string category = 9;
+    string token_name = 10;
+    bool fungible = 11;
+    bool burnable = 12;
+    bool transferable = 13;
+    bool finalized = 14;
+    bool sellable = 15;
+    string base_uri = 16;
+    string memo = 17;
+    string tracking_id = 18;
+    repeated string agreement_ids = 19;
+    common.itemtype.ItemTypeState item_type_state = 20;
 }
 
 message ItemTypes {
@@ -48,15 +50,10 @@ message CreateItemTypeRequest {
 
 message CreateItemAsyncResponse {
     string tracking_id = 1;
-    IVISDK.Common.ItemType.Message.ItemTypeState item_type_state = 2;
+    common.itemtype.ItemTypeState item_type_state = 2;
 }
 
 // Get item type calls
-message GetItemTypeRequest {
-    string environment_id = 1;
-    string item_type_id = 2;
-}
-
 message GetItemTypesRequest {
     string environment_id = 1;
     repeated string item_type_ids = 2;
@@ -70,5 +67,5 @@ message FreezeItemTypeRequest {
 
 message FreezeItemTypeAsyncResponse {
     string tracking_id = 1;
-    IVISDK.Common.ItemType.Message.ItemTypeState item_type_state = 2;
+    common.itemtype.ItemTypeState item_type_state = 2;
 }

@@ -1,18 +1,17 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.item.rpc";
+option java_package = "games.mythical.ivi.sdk.proto.api.item";
 
-import "common/item/message.proto";
-import "api/item/message.proto";
+import "api/item/definition.proto";
 
-package IVISDK.Api.Item.RPC;
+package api.item;
 
 service ItemService {
-  rpc IssueItem(IVISDK.Api.Item.Message.IssueItemRequest) returns (IVISDK.Api.Item.Message.IssueItemStartedResponse);
-  rpc GetItem(IVISDK.Api.Item.Message.GetItemRequest) returns (IVISDK.Api.Item.Message.Item);
-  rpc GetItems(IVISDK.Api.Item.Message.GetItemsRequest) returns (IVISDK.Api.Item.Message.Items);
-  rpc GetItemsForPlayer(IVISDK.Api.Item.Message.GetItemsForPlayerRequest) returns (IVISDK.Api.Item.Message.Items);
-  rpc TransferItem(IVISDK.Api.Item.Message.TransferGameItemRequest) returns (IVISDK.Api.Item.Message.TransferItemStartedResponse);
-  rpc BurnItem(IVISDK.Api.Item.Message.BurnItemRequest) returns (IVISDK.Api.Item.Message.BurnItemStartedResponse);
+  rpc IssueItem(api.item.IssueItemRequest) returns (api.item.IssueItemStartedResponse);
+  rpc GetItem(api.item.GetItemRequest) returns (api.item.Item);
+  rpc GetItems(api.item.GetItemsRequest) returns (api.item.Items);
+  rpc GetItemsForPlayer(api.item.GetItemsForPlayerRequest) returns (api.item.Items);
+  rpc TransferItem(api.item.TransferGameItemRequest) returns (api.item.TransferItemStartedResponse);
+  rpc BurnItem(api.item.BurnItemRequest) returns (api.item.BurnItemStartedResponse);
 }

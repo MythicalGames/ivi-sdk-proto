@@ -1,13 +1,12 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "games.mythical.ivi.sdk.proto.api.order.message";
+option java_package = "games.mythical.ivi.sdk.proto.api.order";
 
-package IVISDK.Api.Order.Message;
+package api.order;
 
-import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";
-import "common/payment/message.proto";
+import "common/payment/definition.proto";
 
 // Order definitions
 enum OrderStatus {
@@ -24,7 +23,7 @@ message Order {
   string address = 6;
   google.protobuf.Struct metadata = 7;
   string request_ip = 8;
-  IVISDK.Common.Payment.Message.PaymentProviderId payment_provider_id = 9;
+  common.payment.PaymentProviderId payment_provider_id = 9;
   string item_types = 10;
   string payment_provider_order_data = 11;
 }
@@ -42,9 +41,9 @@ message CreateOrderRequest {
   string address = 4;
   google.protobuf.Struct metadata = 5;
   string request_ip = 6;
-  IVISDK.Common.Payment.Message.PaymentProviderId payment_provider_id = 7;
+  common.payment.PaymentProviderId payment_provider_id = 7;
   repeated TokenCategory item_types = 8;
-  IVISDK.Common.Payment.Message.PaymentProviderProto payment_provider_data = 9;
+  common.payment.PaymentProviderProto payment_provider_data = 9;
 }
 
 // Get order call
