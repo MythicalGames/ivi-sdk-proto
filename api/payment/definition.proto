@@ -17,5 +17,5 @@ message FinalizePaymentResponse {
   bool success = 1;
   string status = 2;
   string payment_instrument_type = 3;
-  string tracking_id = 4;
+  string braintree_transaction_id = 4;
 }

@@ -9,6 +9,5 @@ package api.player;
 
 service PlayerService {
   rpc LinkPlayer(api.player.LinkPlayerRequest) returns (api.player.LinkPlayerAsyncResponse);
-  rpc GetPlayer(api.player.GetPlayerRequest) returns (api.player.IVIPlayer);
   rpc GetPlayers(api.player.GetPlayersRequest) returns (api.player.IVIPlayers);
 }

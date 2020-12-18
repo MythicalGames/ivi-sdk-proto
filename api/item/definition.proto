@@ -49,11 +49,6 @@ message IssueItemStartedResponse {
 }
 
 // Get item calls
-message GetItemRequest {
-  string environment_id = 1;
-  string item_id = 2;
-}
-
 message GetItemsRequest {
   string environment_id = 1;
   repeated string item_ids = 2;

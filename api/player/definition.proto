@@ -32,12 +32,7 @@ message LinkPlayerAsyncResponse {
   common.player.PlayerState player_state = 2;
 }
 
-// Get player calls
-message GetPlayerRequest {
-  string environment_id = 1;
-  string player_id = 2;
-}
-
+// Get player call
 message GetPlayersRequest {
   string environment_id = 1;
   repeated string player_ids = 2;
