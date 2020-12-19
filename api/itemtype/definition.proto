@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
+
+import "common/itemtype/definition.proto";
+
+package api.itemtype;
+
+// Item type definitions
+message ItemType {
+    string environment_id = 1;
+    string item_type_id = 2;
+    string description = 3;
+    int32 max_supply = 4;
+    int32 current_supply = 5;
+    int32 issued_supply = 6;
+    string issuer = 7;
+    int32 issue_time_span = 8;
+    string category = 9;
+    string token_name = 10;
+    bool fungible = 11;
+    bool burnable = 12;
+    bool transferable = 13;
+    bool finalized = 14;
+    bool sellable = 15;
+    string base_uri = 16;
+    string memo = 17;
+    string tracking_id = 18;
+    repeated string agreement_ids = 19;
+    common.itemtype.ItemTypeState item_type_state = 20;
+}
+
+message ItemTypes {
+    repeated ItemType item_types = 1;
+}
+
+// Create item type call
+message CreateItemTypeRequest {
+    string environment_id = 1;
+    string token_name = 2;
+    string category = 3;
+    int32 max_supply = 4;
+    int32 issue_time_span = 5;
+    bool burnable = 6;
+    bool transferable = 7;
+    bool sellable = 8;
+    repeated string agreement_ids = 9;
+}
+
+message CreateItemAsyncResponse {
+    string tracking_id = 1;
+    common.itemtype.ItemTypeState item_type_state = 2;
+}
+
+// Get item type calls
+message GetItemTypesRequest {
+    string environment_id = 1;
+    repeated string item_type_ids = 2;
+}
+
+// Freeze item type call
+message FreezeItemTypeRequest {
+    string environment_id = 1;
+    string item_type_id = 2;
+}
+
+message FreezeItemTypeAsyncResponse {
+    string tracking_id = 1;
+    common.itemtype.ItemTypeState item_type_state = 2;
+}

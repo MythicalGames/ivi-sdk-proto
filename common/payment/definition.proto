@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.common.payment";
+
+package common.payment;
+
+// Payment definitions
+enum PaymentProviderId {
+  BRAINTREE = 0;
+  BITPAY = 1;
+}
+
+message PaymentProviderProto {
+  oneof provider {
+    BraintreeProto braintree = 1;
+    BitPayProto bitpay = 2;
+  }
+}
+
+message BraintreeProto {
+  string braintree_client_token = 1;
+  string braintree_payment_nonce = 2;
+}
+
+message BitPayProto {
+  string invoice_id = 1;
+}
+
+message BraintreeTokenPayload {
+  string customer_id = 1;
+}
+
+message BitPayTokenPayload {
+  string id = 1;
+  string facade = 2;
+  string label = 3;
+  string pairing_code = 4;
+}

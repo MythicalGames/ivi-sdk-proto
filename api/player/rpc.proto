@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.player";
+
+import "api/player/definition.proto";
+
+package api.player;
+
+service PlayerService {
+  rpc LinkPlayer(api.player.LinkPlayerRequest) returns (api.player.LinkPlayerAsyncResponse);
+  rpc GetPlayers(api.player.GetPlayersRequest) returns (api.player.IVIPlayers);
+}

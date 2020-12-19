@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.common.item";
+
+package common.item;
+
+enum ItemState {
+  PENDING_ISSUED = 0;
+  ISSUED = 1;
+  PENDING_LISTED = 2;
+  LISTED = 3;
+  PENDING_TRANSFERRED = 4;
+  TRANSFERRED = 5;
+  PENDING_SALE = 6; // no need for SOLD as that is just TRANSFERRED to the new owner
+  PENDING_BURNED = 7;
+  BURNED = 8; // item no longer exists on the blockchain so the API will have to keep track through transaction history
+  FAILED = 9;
+}

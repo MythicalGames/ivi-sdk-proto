@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.item";
+
+import "api/item/definition.proto";
+
+package api.item;
+
+service ItemService {
+  rpc IssueItem(api.item.IssueItemRequest) returns (api.item.IssueItemStartedResponse);
+  rpc GetItems(api.item.GetItemsRequest) returns (api.item.Items);
+  rpc GetItemsForPlayer(api.item.GetItemsForPlayerRequest) returns (api.item.Items);
+  rpc TransferItem(api.item.TransferGameItemRequest) returns (api.item.TransferItemStartedResponse);
+  rpc BurnItem(api.item.BurnItemRequest) returns (api.item.BurnItemStartedResponse);
+}

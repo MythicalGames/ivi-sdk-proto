@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.payment";
+
+package api.payment;
+
+import "common/payment/definition.proto";
+
+message FinalizePaymentRequest {
+  string environment_id = 1;
+  string order_id = 2;
+  common.payment.PaymentProviderProto payment_provider_data = 3;
+}
+
+message FinalizePaymentResponse {
+  bool success = 1;
+  string status = 2;
+  string payment_instrument_type = 3;
+  string braintree_transaction_id = 4;
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.streams.item";
+
+import "google/protobuf/empty.proto";
+import "streams/common.proto";
+import "common/item/definition.proto";
+
+package streams.item;
+
+message ItemStatusUpdate {
+  string environment_id = 1;
+  string gameInventory_id = 2;
+  string player_id = 3;
+  string dGood_id = 4;
+  string serial_number = 5;
+  string token_name = 6;
+  string metadata_uri = 7;
+  string tracking_id = 8;
+  common.item.ItemState item_state = 9;
+}
+
+message ItemStatusConfirmRequest {
+  string environment_id = 1;
+  string dGoods_id = 2;
+  string tracking_id = 3;
+}
+
+service ItemStream {
+  rpc ItemStatusStream(streams.Subscribe) returns (stream ItemStatusUpdate);
+  rpc ItemStatusConfirmation(ItemStatusConfirmRequest) returns (google.protobuf.Empty);
+}

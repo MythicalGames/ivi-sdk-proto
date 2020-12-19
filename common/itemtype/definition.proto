@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.common.itemtype";
+
+package common.itemtype;
+
+enum ItemTypeState {
+  PENDING_CREATE = 0;
+  CREATED  = 1;
+  PENDING_FREEZE = 2;
+  FROZEN = 3;
+  SOLD_OUT = 4;
+  EXPIRED = 5;
+  FAILED = 6;
+}
