@@ -50,7 +50,8 @@ message CreateItemTypeRequest {
 
 message CreateItemAsyncResponse {
     string tracking_id = 1;
-    common.itemtype.ItemTypeState item_type_state = 2;
+    string item_type_id = 2;
+    common.itemtype.ItemTypeState item_type_state = 3;
 }
 
 // Get item type calls
