@@ -64,6 +64,7 @@ message GetItemTypesRequest {
 message FreezeItemTypeRequest {
     string environment_id = 1;
     string item_type_id = 2;
+    common.itemtype.ItemTypeState item_type_state = 3;
 }
 
 message FreezeItemTypeAsyncResponse {
