@@ -6,7 +6,7 @@ option java_package = "games.mythical.ivi.sdk.proto.common.player";
 package common.player;
 
 enum PlayerState {
-  PENDING_CREATED = 0;
-  CREATED  = 1;
+  PENDING_LINKED = 0;
+  LINKED  = 1;
   FAILED = 2;
 }

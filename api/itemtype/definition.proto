@@ -9,26 +9,25 @@ package api.itemtype;
 
 // Item type definitions
 message ItemType {
-    string environment_id = 1;
-    string item_type_id = 2;
-    string description = 3;
-    int32 max_supply = 4;
-    int32 current_supply = 5;
-    int32 issued_supply = 6;
-    string issuer = 7;
-    int32 issue_time_span = 8;
-    string category = 9;
-    string token_name = 10;
-    bool fungible = 11;
-    bool burnable = 12;
-    bool transferable = 13;
-    bool finalized = 14;
-    bool sellable = 15;
-    string base_uri = 16;
-    string memo = 17;
-    string tracking_id = 18;
-    repeated string agreement_ids = 19;
-    common.itemtype.ItemTypeState item_type_state = 20;
+    string item_type_id = 1;
+    string description = 2;
+    int32 max_supply = 3;
+    int32 current_supply = 4;
+    int32 issued_supply = 5;
+    string issuer = 6;
+    int32 issue_time_span = 7;
+    string category = 8;
+    string token_name = 9;
+    bool fungible = 10;
+    bool burnable = 11;
+    bool transferable = 12;
+    bool finalized = 13;
+    bool sellable = 14;
+    string base_uri = 15;
+    string memo = 16;
+    string tracking_id = 17;
+    repeated string agreement_ids = 18;
+    common.itemtype.ItemTypeState item_type_state = 19;
 }
 
 message ItemTypes {
