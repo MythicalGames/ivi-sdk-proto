@@ -20,8 +20,9 @@ message ItemTypeStatusUpdate {
 }
 
 message ItemTypeStatusConfirmRequest {
-  string item_type_id = 1;
-  string tracking_id = 2;
+  string environment_id = 1;
+  string item_type_id = 2;
+  string tracking_id = 3;
 }
 
 service ItemTypeStatusStream {

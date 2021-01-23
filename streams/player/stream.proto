@@ -18,8 +18,9 @@ message PlayerStatusUpdate {
 }
 
 message PlayerStatusConfirmRequest {
-  string player_id = 1;
-  string tracking_id = 2;
+  string environment_id = 1;
+  string player_id = 2;
+  string tracking_id = 3;
 }
 
 service PlayerStream {

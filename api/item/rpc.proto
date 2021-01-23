@@ -9,8 +9,9 @@ package api.item;
 
 service ItemService {
   rpc IssueItem(api.item.IssueItemRequest) returns (api.item.IssueItemStartedResponse);
+  rpc GetItem(api.item.GetItemRequest) returns (api.item.Item);
   rpc GetItems(api.item.GetItemsRequest) returns (api.item.Items);
   rpc GetItemsForPlayer(api.item.GetItemsForPlayerRequest) returns (api.item.Items);
-  rpc TransferItem(api.item.TransferGameItemRequest) returns (api.item.TransferItemStartedResponse);
+  rpc TransferItem(api.item.TransferItemRequest) returns (api.item.TransferItemStartedResponse);
   rpc BurnItem(api.item.BurnItemRequest) returns (api.item.BurnItemStartedResponse);
 }
