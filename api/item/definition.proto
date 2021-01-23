@@ -10,19 +10,19 @@ package api.item;
 
 // Item definitions
 message Item {
-  string item_id = 1;
+  string game_inventory_id = 1;
   string category = 2;
   string token_name = 3;
-  string game_inventory_id = 4;
-  int64 dgood_id = 5;
-  string item_name = 6;
-  string player_id = 7;
-  string owner_sidechain_account = 8;
-  int32 serial_number = 9;
-  string amount_paid = 10;
-  string currency = 11;
-  string amount_paid_base = 12;
-  string currency_base = 13;
+  int64 dgoods_id = 4;
+  string item_name = 5;
+  string player_id = 6;
+  string owner_sidechain_account = 7;
+  int32 serial_number = 8;
+  string amount_paid = 9;
+  string currency = 10;
+  string amount_paid_base = 11;
+  string currency_base = 12;
+  string metadata_uri = 13;
   string tracking_id = 14;
   common.item.ItemState item_state = 15;
 }
@@ -49,6 +49,18 @@ message IssueItemStartedResponse {
 }
 
 // Get item calls
+enum ItemHistory {
+  LATEST = 0;
+  ISSUED = 1;
+  ALL = 2;
+}
+
+message GetItemRequest {
+  string environment_id = 1;
+  string item_id = 2;
+  ItemHistory item_history = 3;
+}
+
 message GetItemsRequest {
   string environment_id = 1;
   repeated string item_ids = 2;
@@ -63,13 +75,12 @@ message GetItemsForPlayerRequest {
 
 
 // Transfer item call
-message TransferGameItemRequest {
+message TransferItemRequest {
   string environment_id = 1;
   string game_item_inventory_id = 2;
   string source_player_id = 3;
   string destination_player_id = 4;
   string memo = 5;
-  string new_game_inventory_id = 6;
 }
 
 message TransferItemStartedResponse {
