@@ -6,26 +6,21 @@ option java_package = "games.mythical.ivi.sdk.proto.api.order";
 package api.order;
 
 import "google/protobuf/struct.proto";
-import "common/payment/definition.proto";
+import "common/order/definition.proto";
 
 // Order definitions
-enum OrderStatus {
-  STARTED = 0;
-  COMPLETE = 1;
-}
-
 message Order {
   string order_id = 1;
   string player_id = 2;
   string tax = 3;
   string total = 4;
-  OrderStatus status = 5;
   string address = 6;
   google.protobuf.Struct metadata = 7;
   string request_ip = 8;
-  common.payment.PaymentProviderId payment_provider_id = 9;
+  PaymentProviderId payment_provider_id = 9;
   string item_types = 10;
   string payment_provider_order_data = 11;
+  common.order.OrderState order_status = 12;
 }
 
 // Create order call
@@ -41,13 +36,58 @@ message CreateOrderRequest {
   string address = 4;
   google.protobuf.Struct metadata = 5;
   string request_ip = 6;
-  common.payment.PaymentProviderId payment_provider_id = 7;
+  PaymentProviderId payment_provider_id = 7;
   repeated TokenCategory item_types = 8;
-  common.payment.PaymentProviderProto payment_provider_data = 9;
+  PaymentProviderProto payment_provider_data = 9;
+  common.order.OrderState order_status = 10;
 }
 
 // Get order call
 message GetOrderRequest {
   string environment_id = 1;
   string order_id = 2;
+}
+
+// finalize order
+message FinalizeOrderRequest {
+  string environment_id = 1;
+  string order_id = 2;
+  PaymentProviderProto payment_provider_data = 3;
+}
+
+message FinalizeOrderAsyncResponse {
+  PaymentProviderProto payment_provider_data = 1;
+}
+
+// Payment definitions
+enum PaymentProviderId {
+  BRAINTREE = 0;
+  BITPAY = 1;
+}
+
+message PaymentProviderProto {
+  oneof provider {
+    BraintreeProto braintree = 1;
+    BitPayProto bitpay = 2;
+  }
+}
+
+message BraintreeProto {
+  string braintree_client_token = 1;
+  string braintree_payment_nonce = 2;
+}
+
+message BitPayProto {
+  string invoice_id = 1;
+}
+
+message BraintreeTokenPayload {
+  string customer_id = 1;
+}
+
+message BitPayTokenPayload {
+  string id = 1;
+  string facade = 2;
+  string label = 3;
+  string pairing_code = 4;
 }

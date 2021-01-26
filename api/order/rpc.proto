@@ -10,4 +10,5 @@ import "api/order/definition.proto";
 service OrderService {
   rpc CreateOrder(api.order.CreateOrderRequest) returns (api.order.Order);
   rpc GetOrder(api.order.GetOrderRequest) returns (api.order.Order);
+  rpc FinalizeOrder(api.order.FinalizeOrderRequest) returns (api.order.FinalizeOrderAsyncResponse);
 }
