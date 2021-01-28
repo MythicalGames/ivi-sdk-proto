@@ -11,10 +11,10 @@ package streams.item;
 
 message ItemStatusUpdate {
   string game_inventory_id = 1;
-  string player_id = 2;
-  int64 dgoods_id = 3;
-  int32 serial_number = 4;
-  string token_name = 5;
+  string item_type_id = 2;
+  string player_id = 3;
+  int64 dgoods_id = 4;
+  int32 serial_number = 5;
   string metadata_uri = 6;
   string tracking_id = 7;
   common.item.ItemState item_state = 8;
