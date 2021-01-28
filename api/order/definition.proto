@@ -24,22 +24,35 @@ message Order {
 }
 
 // Create order call
-message TokenCategory {
-  string token = 1;
-  string category = 2;
+message Address {
+  string first_name = 1;
+  string last_name = 2;
+  string address_line_1 = 3;
+  string address_line_2 = 4;
+  string city = 5;
+  string state = 6;
+  string postal_code = 7;
+  string country_name = 8;
+  string country_iso_alpha_2 = 9;
+}
+
+message PurchasedItem {
+  string game_inventory_id = 1;
+  string item_name = 2;
+  string item_type_id = 3;
+  string amount_paid = 4;
+  string currency = 5;
+  google.protobuf.Struct metadata = 6;
 }
 
 message CreateOrderRequest {
   string environment_id = 1;
-  string player_id = 2;
-  string sub_total = 3;
-  string address = 4;
-  google.protobuf.Struct metadata = 5;
-  string request_ip = 6;
-  PaymentProviderId payment_provider_id = 7;
-  repeated TokenCategory item_types = 8;
-  PaymentProviderProto payment_provider_data = 9;
-  common.order.OrderState order_status = 10;
+  string marketplace_id = 2;
+  string player_id = 3;
+  string sub_total = 4;
+  Address address = 5;
+  PaymentProviderId payment_provider_id = 6;
+  repeated PurchasedItem purchased_items = 7;
 }
 
 // Get order call
