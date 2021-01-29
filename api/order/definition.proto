@@ -14,13 +14,11 @@ message Order {
   string player_id = 2;
   string tax = 3;
   string total = 4;
-  string address = 6;
-  google.protobuf.Struct metadata = 7;
-  string request_ip = 8;
-  PaymentProviderId payment_provider_id = 9;
-  string item_types = 10;
-  string payment_provider_order_data = 11;
-  common.order.OrderState order_status = 12;
+  Address address = 5;
+  repeated PurchasedItem purchased_items = 6;
+  PaymentProviderId payment_provider_id = 7;
+  google.protobuf.Struct payment_provider_data = 8;
+  common.order.OrderState order_status = 9;
 }
 
 // Create order call
@@ -42,7 +40,7 @@ message PurchasedItem {
   string item_type_id = 3;
   string amount_paid = 4;
   string currency = 5;
-  google.protobuf.Struct metadata = 6;
+  google.protobuf.Struct properties = 6;
 }
 
 message CreateOrderRequest {
@@ -69,7 +67,7 @@ message FinalizeOrderRequest {
 }
 
 message FinalizeOrderAsyncResponse {
-  PaymentProviderProto payment_provider_data = 1;
+  common.order.OrderState order_status = 1;
 }
 
 // Payment definitions
@@ -92,15 +90,4 @@ message BraintreeProto {
 
 message BitPayProto {
   string invoice_id = 1;
-}
-
-message BraintreeTokenPayload {
-  string customer_id = 1;
-}
-
-message BitPayTokenPayload {
-  string id = 1;
-  string facade = 2;
-  string label = 3;
-  string pairing_code = 4;
 }
