@@ -11,20 +11,19 @@ package api.item;
 // Item definitions
 message Item {
   string game_inventory_id = 1;
-  string category = 2;
-  string token_name = 3;
-  int64 dgoods_id = 4;
-  string item_name = 5;
-  string player_id = 6;
-  string owner_sidechain_account = 7;
-  int32 serial_number = 8;
-  string amount_paid = 9;
-  string currency = 10;
-  string amount_paid_base = 11;
-  string currency_base = 12;
-  string metadata_uri = 13;
-  string tracking_id = 14;
-  common.item.ItemState item_state = 15;
+  string item_type_id = 2;
+  int64 dgoods_id = 3;
+  string item_name = 4;
+  string player_id = 5;
+  string owner_sidechain_account = 6;
+  int32 serial_number = 7;
+  string amount_paid = 8;
+  string currency = 9;
+  string amount_paid_base = 10;
+  string currency_base = 11;
+  string metadata_uri = 12;
+  string tracking_id = 13;
+  common.item.ItemState item_state = 14;
 }
 
 message Items {
@@ -37,7 +36,7 @@ message IssueItemRequest {
   string game_inventory_id = 2;
   string player_id = 3;
   string item_name = 4;
-  string token_name = 5;
+  string item_type_id = 5;
   google.protobuf.Struct additional_metadata = 6;
   string amount_paid = 7;
   string currency = 8;
