@@ -17,3 +17,11 @@ enum ItemState {
   BURNED = 8; // item no longer exists on the blockchain so the API will have to keep track through transaction history
   FAILED = 9;
 }
+
+message OptionalInformation {
+  string description = 1;
+  string image_small = 2;
+  string image_large = 3;
+  string render = 4;
+  string memo = 5;
+}

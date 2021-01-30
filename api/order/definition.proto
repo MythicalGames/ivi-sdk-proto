@@ -7,18 +7,25 @@ package api.order;
 
 import "google/protobuf/struct.proto";
 import "common/order/definition.proto";
+import "common/item/definition.proto";
 
 // Order definitions
+message PurchasedItems {
+  repeated PurchasedItem purchased_items = 1;
+}
+
 message Order {
   string order_id = 1;
   string player_id = 2;
   string tax = 3;
   string total = 4;
   Address address = 5;
-  repeated PurchasedItem purchased_items = 6;
-  PaymentProviderId payment_provider_id = 7;
-  google.protobuf.Struct payment_provider_data = 8;
-  common.order.OrderState order_status = 9;
+  oneof line_items {
+      PurchasedItems purchased_items = 6;
+      string listing_id = 7;
+  }
+  PaymentProviderId payment_provider_id = 8;
+  common.order.OrderState order_status = 10;
 }
 
 // Create order call
@@ -41,6 +48,7 @@ message PurchasedItem {
   string amount_paid = 4;
   string currency = 5;
   google.protobuf.Struct properties = 6;
+  common.item.OptionalInformation optional_information = 7;
 }
 
 message CreateOrderRequest {
