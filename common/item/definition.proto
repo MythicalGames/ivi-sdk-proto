@@ -23,5 +23,4 @@ message OptionalInformation {
   string image_small = 2;
   string image_large = 3;
   string render = 4;
-  string memo = 5;
 }

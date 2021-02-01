@@ -24,10 +24,9 @@ message ItemType {
     bool finalized = 13;
     bool sellable = 14;
     string base_uri = 15;
-    string memo = 16;
-    string tracking_id = 17;
-    repeated string agreement_ids = 18;
-    common.itemtype.ItemTypeState item_type_state = 19;
+    string tracking_id = 16;
+    repeated string agreement_ids = 17;
+    common.itemtype.ItemTypeState item_type_state = 18;
 }
 
 message ItemTypes {

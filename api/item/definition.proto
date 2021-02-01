@@ -80,7 +80,6 @@ message TransferItemRequest {
   string game_item_inventory_id = 2;
   string source_player_id = 3;
   string destination_player_id = 4;
-  string memo = 5;
 }
 
 message TransferItemStartedResponse {
