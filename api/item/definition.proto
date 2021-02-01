@@ -37,9 +37,10 @@ message IssueItemRequest {
   string player_id = 3;
   string item_name = 4;
   string item_type_id = 5;
-  google.protobuf.Struct additional_metadata = 6;
+  google.protobuf.Struct properties = 6;
   string amount_paid = 7;
   string currency = 8;
+  common.item.OptionalInformation optional_information = 9;
 }
 
 message IssueItemStartedResponse {

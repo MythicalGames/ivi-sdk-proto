@@ -11,11 +11,15 @@ package streams.order;
 
 message OrderStatusUpdate {
   string order_id = 1;
-  string payment_instrument_type = 2;
-  string braintree_transaction_id = 3;
   common.order.OrderState order_state = 4;
+}
+
+message OrderStatusConfirmRequest {
+  string environment_id = 1;
+  string order_id = 2;
 }
 
 service OrderStream {
   rpc OrderStatusStream(streams.Subscribe) returns (stream OrderStatusUpdate);
+  rpc OrderStatusConfirmation(OrderStatusConfirmRequest) returns (google.protobuf.Empty);
 }
