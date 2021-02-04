@@ -72,7 +72,27 @@ message GetItemsForPlayerRequest {
 }
 
 // Metadata calls
+message GetItemMetadataRequest {
+  string game_inventory_id = 1;
+}
 
+message GetItemMetadataResponse {
+  string game_inventory_id = 1;
+  google.protobuf.Struct properties = 3;
+  common.item.OptionalInformation optional_information = 4;
+}
+
+message UpdateItemMetadata {
+  string game_inventory_id = 1;
+  google.protobuf.Struct properties = 3;
+  common.item.OptionalInformation optional_information = 4;
+}
+
+message UpdateItemMetadataRequest {
+  repeated UpdateItemMetadata update_items = 1;
+}
+
+message UpdateItemMetadataResponse { }
 
 // Transfer item call
 message TransferItemRequest {
