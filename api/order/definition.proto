@@ -17,7 +17,7 @@ message PurchasedItems {
 message Order {
   string order_id = 1;
   string store_id = 2;
-  string player_id = 3;
+  string buyer_player_id = 3;
   string tax = 4;
   string total = 5;
   Address address = 6;
@@ -55,7 +55,7 @@ message PurchasedItem {
 message CreateOrderRequest {
   string environment_id = 1;
   string store_id = 2;
-  string player_id = 3;
+  string buyer_player_id = 3;
   string sub_total = 4;
   Address address = 5;
   oneof line_items {
