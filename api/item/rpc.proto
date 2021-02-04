@@ -14,6 +14,5 @@ service ItemService {
   rpc GetItemsForPlayer(api.item.GetItemsForPlayerRequest) returns (api.item.Items);
   rpc TransferItem(api.item.TransferItemRequest) returns (api.item.TransferItemStartedResponse);
   rpc BurnItem(api.item.BurnItemRequest) returns (api.item.BurnItemStartedResponse);
-  rpc GetItemMetadata(api.item.GetItemMetadataRequest) returns (api.item.GetItemMetadataResponse);
   rpc UpdateItemMetadata(api.item.UpdateItemMetadataRequest) returns (api.item.UpdateItemMetadataResponse);
 }
