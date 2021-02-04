@@ -16,15 +16,16 @@ message PurchasedItems {
 
 message Order {
   string order_id = 1;
-  string player_id = 2;
-  string tax = 3;
-  string total = 4;
-  Address address = 5;
+  string store_id = 2;
+  string player_id = 3;
+  string tax = 4;
+  string total = 5;
+  Address address = 6;
   oneof line_items {
-      PurchasedItems purchased_items = 6;
-      string listing_id = 7;
+      PurchasedItems purchased_items = 7;
+      string listing_id = 8;
   }
-  PaymentProviderId payment_provider_id = 8;
+  PaymentProviderId payment_provider_id = 9;
   common.order.OrderState order_status = 10;
 }
 
@@ -53,12 +54,22 @@ message PurchasedItem {
 
 message CreateOrderRequest {
   string environment_id = 1;
-  string marketplace_id = 2;
+  string store_id = 2;
   string player_id = 3;
   string sub_total = 4;
   Address address = 5;
-  PaymentProviderId payment_provider_id = 6;
-  repeated PurchasedItem purchased_items = 7;
+  oneof line_items {
+    PurchasedItems purchased_items = 6;
+    string listing_id = 7;
+  }
+  PaymentProviderId payment_provider_id = 8;
+}
+
+message CreateOrderAsyncResponse {
+  string order_id = 1;
+  string tax = 2;
+  string total = 3;
+  common.order.OrderState order_status = 4;
 }
 
 // Get order call
