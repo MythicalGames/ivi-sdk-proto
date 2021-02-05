@@ -14,6 +14,7 @@ message IVIPlayer {
   string sidechain_account_name = 3;
   string tracking_id = 4;
   common.player.PlayerState player_state = 5;
+  int64 created_timestamp = 6;
 }
 
 message IVIPlayers {

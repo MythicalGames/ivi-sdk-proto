@@ -27,6 +27,8 @@ message ItemType {
     string tracking_id = 16;
     repeated string agreement_ids = 17;
     common.itemtype.ItemTypeState item_type_state = 18;
+    int64 created_timestamp = 19;
+    int64 updated_timestamp = 20;
 }
 
 message ItemTypes {

@@ -17,13 +17,14 @@ message Item {
   string player_id = 5;
   string owner_sidechain_account = 6;
   int32 serial_number = 7;
-  string amount_paid = 8;
-  string currency = 9;
-  string amount_paid_base = 10;
-  string currency_base = 11;
-  string metadata_uri = 12;
-  string tracking_id = 13;
-  common.item.ItemState item_state = 14;
+  string currency_base = 8;
+  string metadata_uri = 9;
+  string tracking_id = 10;
+  google.protobuf.Struct properties = 11;
+  common.item.OptionalInformation optional_information = 12;
+  common.item.ItemState item_state = 13;
+  int64 created_timestamp = 14;
+  int64 updated_timestamp = 15;
 }
 
 message Items {
