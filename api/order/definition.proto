@@ -27,6 +27,7 @@ message Order {
   }
   PaymentProviderId payment_provider_id = 9;
   common.order.OrderState order_status = 10;
+  int64 created_timestamp = 11;
 }
 
 // Create order call

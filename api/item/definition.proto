@@ -19,11 +19,13 @@ message Item {
   int32 serial_number = 7;
   string amount_paid = 8;
   string currency = 9;
-  string amount_paid_base = 10;
-  string currency_base = 11;
-  string metadata_uri = 12;
-  string tracking_id = 13;
+  string metadata_uri = 10;
+  string tracking_id = 11;
+  google.protobuf.Struct properties = 12;
+  common.item.OptionalInformation optional_information = 13;
   common.item.ItemState item_state = 14;
+  int64 created_timestamp = 15;
+  int64 updated_timestamp = 16;
 }
 
 message Items {
