@@ -24,6 +24,7 @@ message ItemStatusConfirmRequest {
   string environment_id = 1;
   string game_inventory_id = 2;
   string tracking_id = 3;
+  common.item.ItemState item_state = 4;
 }
 
 service ItemStream {
