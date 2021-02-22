@@ -16,6 +16,8 @@ enum ItemState {
   PENDING_BURNED = 7;
   BURNED = 8; // item no longer exists on the blockchain so the API will have to keep track through transaction history
   FAILED = 9;
+  PENDING_CLOSE_LISTING = 10;
+  LISTING_CLOSED = 11;
 }
 
 message OptionalInformation {
