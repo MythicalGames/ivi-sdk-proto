@@ -23,6 +23,7 @@ message ItemTypeStatusConfirmRequest {
   string environment_id = 1;
   string item_type_id = 2;
   string tracking_id = 3;
+  common.itemtype.ItemTypeState item_type_state = 4;
 }
 
 service ItemTypeStatusStream {
