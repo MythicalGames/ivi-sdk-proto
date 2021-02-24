@@ -21,6 +21,7 @@ message PlayerStatusConfirmRequest {
   string environment_id = 1;
   string player_id = 2;
   string tracking_id = 3;
+  common.player.PlayerState player_state = 4;
 }
 
 service PlayerStream {
