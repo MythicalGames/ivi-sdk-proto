@@ -4,6 +4,7 @@ option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.player";
 
 import "common/player/definition.proto";
+import "common/common.proto";
 
 package api.player;
 
@@ -37,5 +38,8 @@ message LinkPlayerAsyncResponse {
 message GetPlayersRequest {
   string environment_id = 1;
   repeated string player_ids = 2;
+  int64 created_timestamp = 3;
+  int32 page_size = 4;
+  common.SortOrder sort_order = 5;
 }
 
