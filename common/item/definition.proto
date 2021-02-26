@@ -19,11 +19,3 @@ enum ItemState {
   PENDING_CLOSE_LISTING = 10;
   LISTING_CLOSED = 11;
 }
-
-message OptionalInformation {
-  string description = 1;
-  string image_small = 2;
-  string image_large = 3;
-  string render = 4;
-  string authenticity_image = 5;
-}

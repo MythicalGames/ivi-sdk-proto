@@ -8,6 +8,7 @@ package api.order;
 import "google/protobuf/struct.proto";
 import "common/order/definition.proto";
 import "common/item/definition.proto";
+import "common/common.proto";
 
 // Order definitions
 message PurchasedItems {
@@ -49,8 +50,7 @@ message PurchasedItem {
   string item_type_id = 3;
   string amount_paid = 4;
   string currency = 5;
-  google.protobuf.Struct properties = 6;
-  common.item.OptionalInformation optional_information = 7;
+  common.Metadata metadata = 6;
 }
 
 message CreateOrderRequest {

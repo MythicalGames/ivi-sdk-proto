@@ -4,31 +4,32 @@ option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
 
 import "common/itemtype/definition.proto";
+import "common/common.proto";
 
 package api.itemtype;
 
 // Item type definitions
 message ItemType {
     string item_type_id = 1;
-    string description = 2;
-    int32 max_supply = 3;
-    int32 current_supply = 4;
-    int32 issued_supply = 5;
-    string issuer = 6;
-    int32 issue_time_span = 7;
-    string category = 8;
-    string token_name = 9;
-    bool fungible = 10;
-    bool burnable = 11;
-    bool transferable = 12;
-    bool finalized = 13;
-    bool sellable = 14;
-    string base_uri = 15;
-    string tracking_id = 16;
-    repeated string agreement_ids = 17;
-    common.itemtype.ItemTypeState item_type_state = 18;
-    int64 created_timestamp = 19;
-    int64 updated_timestamp = 20;
+    int32 max_supply = 2;
+    int32 current_supply = 3;
+    int32 issued_supply = 4;
+    string issuer = 5;
+    int32 issue_time_span = 6;
+    string category = 7;
+    string token_name = 8;
+    bool fungible = 9;
+    bool burnable = 10;
+    bool transferable = 11;
+    bool finalized = 12;
+    bool sellable = 13;
+    string base_uri = 14;
+    string tracking_id = 15;
+    repeated string agreement_ids = 16;
+    common.itemtype.ItemTypeState item_type_state = 17;
+    int64 created_timestamp = 18;
+    int64 updated_timestamp = 19;
+    common.Metadata metadata = 20;
 }
 
 message ItemTypes {
@@ -46,6 +47,7 @@ message CreateItemTypeRequest {
     bool transferable = 7;
     bool sellable = 8;
     repeated string agreement_ids = 9;
+    common.Metadata metadata = 10;
 }
 
 message CreateItemAsyncResponse {
@@ -64,7 +66,6 @@ message GetItemTypesRequest {
 message FreezeItemTypeRequest {
     string environment_id = 1;
     string item_type_id = 2;
-    common.itemtype.ItemTypeState item_type_state = 3;
 }
 
 message FreezeItemTypeAsyncResponse {

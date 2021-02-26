@@ -5,6 +5,7 @@ option java_package = "games.mythical.ivi.sdk.proto.api.item";
 
 import "google/protobuf/struct.proto";
 import "common/item/definition.proto";
+import "common/common.proto";
 
 package api.item;
 
@@ -20,11 +21,10 @@ message Item {
   string currency_base = 8;
   string metadata_uri = 9;
   string tracking_id = 10;
-  google.protobuf.Struct properties = 11;
-  common.item.OptionalInformation optional_information = 12;
-  common.item.ItemState item_state = 13;
-  int64 created_timestamp = 14;
-  int64 updated_timestamp = 15;
+  common.Metadata metadata = 11;
+  common.item.ItemState item_state = 12;
+  int64 created_timestamp = 13;
+  int64 updated_timestamp = 14;
 }
 
 message Items {
@@ -41,7 +41,7 @@ message IssueItemRequest {
   google.protobuf.Struct properties = 6;
   string amount_paid = 7;
   string currency = 8;
-  common.item.OptionalInformation optional_information = 9;
+  common.Metadata metadata = 9;
 }
 
 message IssueItemStartedResponse {
@@ -74,9 +74,9 @@ message GetItemsForPlayerRequest {
 
 // Metadata calls
 message UpdateItemMetadata {
-  string game_inventory_id = 1;
-  google.protobuf.Struct properties = 3;
-  common.item.OptionalInformation optional_information = 4;
+  string environment_id = 1;
+  string game_inventory_id = 2;
+  common.Metadata metadata = 3;
 }
 
 message UpdateItemMetadataRequest {
