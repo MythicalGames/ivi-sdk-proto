@@ -18,3 +18,9 @@ message Metadata {
   string image = 3;
   google.protobuf.Struct properties = 4;
 }
+
+enum Finalized {
+  ALL = 0;
+  YES = 1;
+  NO = 2;
+}
