@@ -38,13 +38,12 @@ message IssueItemRequest {
   string player_id = 3;
   string item_name = 4;
   string item_type_id = 5;
-  google.protobuf.Struct properties = 6;
-  string amount_paid = 7;
-  string currency = 8;
-  common.Metadata metadata = 9;
+  string amount_paid = 6;
+  string currency = 7;
+  common.Metadata metadata = 8;
   // optional
-  string store_id = 10;
-  string order_id = 11;
+  string store_id = 9;
+  string order_id = 10;
 }
 
 message IssueItemStartedResponse {
@@ -61,7 +60,7 @@ message GetItemRequest {
 
 message GetItemsRequest {
   string environment_id = 1;
-  int64 created_timestamp = 2;
+  uint64 created_timestamp = 2;
   int32 page_size = 3;
   common.SortOrder sort_order = 4;
   common.Finalized finalized = 5;
