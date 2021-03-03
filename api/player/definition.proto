@@ -36,7 +36,8 @@ message LinkPlayerAsyncResponse {
 
 // Get player calls
 message GetPlayerRequest {
-  string player_id = 1;
+  string environment_id = 1;
+  string player_id = 2;
 }
 
 
