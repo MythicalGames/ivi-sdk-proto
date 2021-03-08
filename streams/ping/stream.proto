@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.streams.ping";
+
+package streams.ping;
+
+message PingRequest { }
+message PingResponse { }
+
+service PingStream {
+  rpc Ping(PingRequest) returns (stream PingResponse);
+}
