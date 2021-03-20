@@ -11,10 +11,8 @@ package streams.player;
 
 message PlayerStatusUpdate {
   string player_id = 1;
-  string ivi_user_id = 2;
-  string sidechain_account_name = 3;
-  string tracking_id = 4;
-  common.player.PlayerState player_state = 5;
+  string tracking_id = 2;
+  common.player.PlayerState player_state = 3;
 }
 
 message PlayerStatusConfirmRequest {

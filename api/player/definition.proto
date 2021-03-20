@@ -11,11 +11,12 @@ package api.player;
 // Player definitions
 message IVIPlayer {
   string player_id = 1;
-  string ivi_user_id = 2;
-  string sidechain_account_name = 3;
-  string tracking_id = 4;
-  common.player.PlayerState player_state = 5;
-  int64 created_timestamp = 6;
+  string email = 2;
+  string display_name = 3;
+  string sidechain_account_name = 4;
+  string tracking_id = 5;
+  common.player.PlayerState player_state = 6;
+  int64 created_timestamp = 7;
 }
 
 message IVIPlayers {
@@ -26,7 +27,8 @@ message IVIPlayers {
 message LinkPlayerRequest {
   string environment_id = 1;
   string player_id = 2;
-  string ivi_user_id = 3;
+  string email = 3;
+  string display_name = 4;
 }
 
 message LinkPlayerAsyncResponse {
