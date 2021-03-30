@@ -4,6 +4,7 @@ option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
 
 import "api/itemtype/definition.proto";
+import "google/protobuf/empty.proto";
 
 package api.itemtype;
 
@@ -11,4 +12,5 @@ service ItemTypeService {
   rpc CreateItemType(api.itemtype.CreateItemTypeRequest) returns (api.itemtype.CreateItemAsyncResponse);
   rpc GetItemTypes(api.itemtype.GetItemTypesRequest) returns (api.itemtype.ItemTypes);
   rpc FreezeItemType(api.itemtype.FreezeItemTypeRequest) returns (api.itemtype.FreezeItemTypeAsyncResponse);
+  rpc UpdateItemTypeMetadata(api.itemtype.UpdateItemTypeMetadataPayload) returns (google.protobuf.Empty) {}
 }
