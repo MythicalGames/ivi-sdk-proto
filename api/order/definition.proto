@@ -9,10 +9,11 @@ import "google/protobuf/struct.proto";
 import "common/order/definition.proto";
 import "common/item/definition.proto";
 import "common/common.proto";
+import "google/protobuf/timestamp.proto";
 
 // Order definitions
-message PurchasedItems {
-  repeated PurchasedItem purchased_items = 1;
+message IssuedItems {
+  repeated IssuedItem purchased_items = 1;
 }
 
 message Order {
@@ -23,7 +24,7 @@ message Order {
   string total = 5;
   Address address = 6;
   oneof line_items {
-      PurchasedItems purchased_items = 7;
+      IssuedItems purchased_items = 7;
       string listing_id = 8;
   }
   PaymentProviderId payment_provider_id = 9;
@@ -44,7 +45,7 @@ message Address {
   string country_iso_alpha_2 = 9;
 }
 
-message PurchasedItem {
+message IssuedItem {
   string game_inventory_id = 1;
   string item_name = 2;
   string game_item_type_id = 3;
@@ -54,23 +55,39 @@ message PurchasedItem {
 }
 
 message CreateOrderRequest {
-  string environment_id = 1;
-  string store_id = 2;
-  string buyer_player_id = 3;
-  string sub_total = 4;
-  Address address = 5;
-  oneof line_items {
-    PurchasedItems purchased_items = 6;
-    string listing_id = 7;
-  }
+  string buyer_player_id = 1;
+  string sub_total = 2;
+  Address address = 3;
+  google.protobuf.Struct metadata = 4;
+  string created_by = 5;
+  string request_ip = 6;
+  string environment_id = 7;
   PaymentProviderId payment_provider_id = 8;
+  OrderRequestProviderProto payment_provider_data = 9;
+  oneof line_items {
+    IssuedItems item_types = 10;
+    string listing_id = 11;
+  }
+  string store_id = 12;
 }
 
 message CreateOrderAsyncResponse {
   string order_id = 1;
-  string tax = 2;
-  string total = 3;
-  common.order.OrderState order_status = 4;
+  string buyer_player_id = 2;
+  string tax = 3;
+  string total = 4;
+  common.order.OrderState order_status = 5;
+  string address = 6;
+  string metadata = 7;
+  string created_by = 8;
+  google.protobuf.Timestamp created_timestamp = 9;
+  string request_ip = 10;
+  string environment_id = 11;
+  PaymentProviderId payment_provider_id = 12;
+  IssuedItems item_types = 13;
+  OrderRequestProviderProto payment_provider_data = 14;
+  string listing_id = 15;
+  string store_id = 16;
 }
 
 // Get order call
@@ -84,10 +101,17 @@ message FinalizeOrderRequest {
   string environment_id = 1;
   string order_id = 2;
   PaymentProviderProto payment_provider_data = 3;
+  string fraud_session_id = 4;
 }
 
 message FinalizeOrderAsyncResponse {
-  common.order.OrderState order_status = 1;
+  bool success = 1;
+  common.order.OrderState order_status = 2;
+  string payment_instrument_type = 3;
+  string transaction_id = 4;
+  IssuedItems pending_issued_items = 5;
+  FraudResultProto fraud_score = 6;
+  string processor_response = 7;
 }
 
 // Payment definitions
@@ -110,4 +134,20 @@ message BraintreeProto {
 
 message BitPayProto {
   string invoice_id = 1;
+}
+
+message OrderRequestProviderProto {
+  oneof provider {
+    BitPayOrderRequestProto bitpay = 1;
+  }
+}
+
+message BitPayOrderRequestProto {
+  string redirect_url = 1;
+  string notification_url = 2;
+}
+
+message FraudResultProto {
+  int32 fraud_score = 1;
+  string fraud_omniscore = 2;
 }
