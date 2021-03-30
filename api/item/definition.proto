@@ -12,7 +12,7 @@ package api.item;
 // Item definitions
 message Item {
   string game_inventory_id = 1;
-  string item_type_id = 2;
+  string game_item_type_id = 2;
   int64 dgoods_id = 3;
   string item_name = 4;
   string player_id = 5;
@@ -37,7 +37,7 @@ message IssueItemRequest {
   string game_inventory_id = 2;
   string player_id = 3;
   string item_name = 4;
-  string item_type_id = 5;
+  string game_item_type_id = 5;
   string amount_paid = 6;
   string currency = 7;
   common.Metadata metadata = 8;

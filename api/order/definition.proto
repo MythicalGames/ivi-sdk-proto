@@ -47,7 +47,7 @@ message Address {
 message PurchasedItem {
   string game_inventory_id = 1;
   string item_name = 2;
-  string item_type_id = 3;
+  string game_item_type_id = 3;
   string amount_paid = 4;
   string currency = 5;
   common.Metadata metadata = 6;
