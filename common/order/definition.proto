@@ -6,10 +6,11 @@ option java_package = "games.mythical.ivi.sdk.proto.common.order";
 package common.order;
 
 enum OrderState {
-  CREATED = 0;
-  PENDING = 1;
+  STARTED = 0;
+  PROCESSING = 1;
   ASSIGNING = 2;
   COMPLETE = 3;
   DECLINED = 4;
   FAILED = 5;
+  PAID = 6;
 }
