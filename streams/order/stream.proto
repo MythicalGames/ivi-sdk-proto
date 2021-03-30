@@ -17,6 +17,7 @@ message OrderStatusUpdate {
 message OrderStatusConfirmRequest {
   string environment_id = 1;
   string order_id = 2;
+  common.order.OrderState order_state = 3;
 }
 
 service OrderStream {
