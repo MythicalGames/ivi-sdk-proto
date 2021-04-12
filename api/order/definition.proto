@@ -18,18 +18,22 @@ message IssuedItems {
 
 message Order {
   string order_id = 1;
-  string store_id = 2;
-  string buyer_player_id = 3;
-  string tax = 4;
-  string total = 5;
+  string buyer_player_id = 2;
+  string tax = 3;
+  string total = 4;
+  common.order.OrderState order_status = 5;
   Address address = 6;
-  oneof line_items {
-      IssuedItems purchased_items = 7;
-      string listing_id = 8;
-  }
-  PaymentProviderId payment_provider_id = 9;
-  common.order.OrderState order_status = 10;
-  int64 created_timestamp = 11;
+  string metadata = 7;
+  string created_by = 8;
+  // TODO: provide if needed, currently is butchered in orderClient
+  // google.protobuf.Timestamp created_timestamp = 9;
+  string request_ip = 10;
+  string environment_id = 11;
+  PaymentProviderId payment_provider_id = 12;
+  IssuedItems purchased_items = 13;
+  PaymentProviderOrderProto payment_provider_data = 14;
+  string listing_id = 15;
+  string store_id = 16;
 }
 
 // Create order call
@@ -59,7 +63,6 @@ message CreateOrderRequest {
   string sub_total = 2;
   Address address = 3;
   google.protobuf.Struct metadata = 4;
-  string created_by = 5;
   string request_ip = 6;
   string environment_id = 7;
   PaymentProviderId payment_provider_id = 8;
@@ -69,25 +72,6 @@ message CreateOrderRequest {
     string listing_id = 11;
   }
   string store_id = 12;
-}
-
-message CreateOrderAsyncResponse {
-  string order_id = 1;
-  string buyer_player_id = 2;
-  string tax = 3;
-  string total = 4;
-  common.order.OrderState order_status = 5;
-  string address = 6;
-  string metadata = 7;
-  string created_by = 8;
-  google.protobuf.Timestamp created_timestamp = 9;
-  string request_ip = 10;
-  string environment_id = 11;
-  PaymentProviderId payment_provider_id = 12;
-  IssuedItems purchased_items = 13;
-  OrderRequestProviderProto payment_provider_data = 14;
-  string listing_id = 15;
-  string store_id = 16;
 }
 
 // Get order call
@@ -100,7 +84,7 @@ message GetOrderRequest {
 message FinalizeOrderRequest {
   string environment_id = 1;
   string order_id = 2;
-  PaymentProviderProto payment_provider_data = 3;
+  PaymentRequestProto payment_request_data = 3;
   string fraud_session_id = 4;
 }
 
@@ -120,22 +104,6 @@ enum PaymentProviderId {
   BITPAY = 1;
 }
 
-message PaymentProviderProto {
-  oneof provider {
-    BraintreeProto braintree = 1;
-    BitPayProto bitpay = 2;
-  }
-}
-
-message BraintreeProto {
-  string braintree_client_token = 1;
-  string braintree_payment_nonce = 2;
-}
-
-message BitPayProto {
-  string invoice_id = 1;
-}
-
 message OrderRequestProviderProto {
   oneof provider {
     BitPayOrderRequestProto bitpay = 1;
@@ -145,6 +113,37 @@ message OrderRequestProviderProto {
 message BitPayOrderRequestProto {
   string redirect_url = 1;
   string notification_url = 2;
+}
+
+message PaymentProviderOrderProto {
+  oneof provider {
+    BraintreeProto braintree = 1;
+    BitPayProto bitpay = 2;
+  }
+}
+
+message BraintreeProto {
+  string client_token = 1;
+}
+
+message BitPayProto {
+  google.protobuf.Struct invoice = 1;
+}
+
+message PaymentRequestProto {
+  oneof provider {
+    BraintreePaymentRequestProto braintree = 1;
+    BitPayPaymentRequestProto bitpay = 2;
+  }
+}
+
+message BraintreePaymentRequestProto {
+  string braintree_client_token = 1;
+  string braintree_payment_nonce = 2;
+}
+
+message BitPayPaymentRequestProto {
+  string invoice_id = 1;
 }
 
 message FraudResultProto {
