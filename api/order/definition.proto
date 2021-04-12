@@ -7,7 +7,6 @@ package api.order;
 
 import "google/protobuf/struct.proto";
 import "common/order/definition.proto";
-import "common/item/definition.proto";
 import "common/common.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -30,9 +29,11 @@ message Order {
   string request_ip = 10;
   string environment_id = 11;
   PaymentProviderId payment_provider_id = 12;
-  IssuedItems purchased_items = 13;
+  oneof line_items {
+    IssuedItems purchased_items = 13;
+    string listing_id = 15;
+  }
   PaymentProviderOrderProto payment_provider_data = 14;
-  string listing_id = 15;
   string store_id = 16;
 }
 
@@ -117,13 +118,8 @@ message BitPayOrderRequestProto {
 
 message PaymentProviderOrderProto {
   oneof provider {
-    BraintreeProto braintree = 1;
-    BitPayProto bitpay = 2;
+    BitPayProto bitpay = 1;
   }
-}
-
-message BraintreeProto {
-  string client_token = 1;
 }
 
 message BitPayProto {
