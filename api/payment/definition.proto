@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.payment";
+
+package api.payment;
+
+message CreateTokenRequest {
+  string environment_id = 1;
+  oneof provider {
+    BraintreeTokenRequest braintree = 2;
+  }
+}
+
+message BraintreeTokenRequest {
+  string customer_id = 1;
+}
+
+message Token {
+  oneof provider {
+    BraintreeToken braintree = 1;
+  }
+}
+
+message BraintreeToken {
+  string token = 1;
+}
