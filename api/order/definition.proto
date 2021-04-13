@@ -23,10 +23,9 @@ message Order {
   string total = 4;
   ivi.proto.common.order.OrderState order_status = 5;
   Address address = 6;
-  string metadata = 7;
+  google.protobuf.Struct metadata = 7;
   string created_by = 8;
-  // TODO: provide if needed, currently is butchered in orderClient
-  // google.protobuf.Timestamp created_timestamp = 9;
+  uint64 created_timestamp = 9;
   string request_ip = 10;
   string environment_id = 11;
   ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 12;
