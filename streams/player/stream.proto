@@ -7,22 +7,22 @@ import "google/protobuf/empty.proto";
 import "streams/common.proto";
 import "common/player/definition.proto";
 
-package streams.player;
+package ivi.rpc.streams.player;
 
 message PlayerStatusUpdate {
   string player_id = 1;
   string tracking_id = 2;
-  common.player.PlayerState player_state = 3;
+  ivi.proto.common.player.PlayerState player_state = 3;
 }
 
 message PlayerStatusConfirmRequest {
   string environment_id = 1;
   string player_id = 2;
   string tracking_id = 3;
-  common.player.PlayerState player_state = 4;
+  ivi.proto.common.player.PlayerState player_state = 4;
 }
 
 service PlayerStream {
-  rpc PlayerStatusStream(streams.Subscribe) returns (stream PlayerStatusUpdate);
+  rpc PlayerStatusStream(ivi.rpc.streams.Subscribe) returns (stream PlayerStatusUpdate);
   rpc PlayerStatusConfirmation(PlayerStatusConfirmRequest) returns (google.protobuf.Empty);
 }

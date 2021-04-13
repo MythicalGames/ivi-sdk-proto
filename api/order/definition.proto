@@ -3,13 +3,13 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.order";
 
-package api.order;
+package ivi.proto.api.order;
 
 import "google/protobuf/struct.proto";
 import "common/order/definition.proto";
-import "common/item/definition.proto";
 import "common/common.proto";
 import "google/protobuf/timestamp.proto";
+import "api/order/payment.proto";
 
 // Order definitions
 message IssuedItems {
@@ -27,8 +27,8 @@ message Order {
       IssuedItems purchased_items = 7;
       string listing_id = 8;
   }
-  PaymentProviderId payment_provider_id = 9;
-  common.order.OrderState order_status = 10;
+  ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 9;
+  ivi.proto.common.order.OrderState order_status = 10;
   int64 created_timestamp = 11;
 }
 
@@ -51,7 +51,7 @@ message IssuedItem {
   string game_item_type_id = 3;
   string amount_paid = 4;
   string currency = 5;
-  common.Metadata metadata = 6;
+  ivi.proto.common.Metadata metadata = 6;
 }
 
 message CreateOrderRequest {
@@ -62,7 +62,7 @@ message CreateOrderRequest {
   string created_by = 5;
   string request_ip = 6;
   string environment_id = 7;
-  PaymentProviderId payment_provider_id = 8;
+  ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 8;
   OrderRequestProviderProto payment_provider_data = 9;
   oneof line_items {
     IssuedItems purchased_items = 10;
@@ -76,14 +76,14 @@ message CreateOrderAsyncResponse {
   string buyer_player_id = 2;
   string tax = 3;
   string total = 4;
-  common.order.OrderState order_status = 5;
+  ivi.proto.common.order.OrderState order_status = 5;
   string address = 6;
   string metadata = 7;
   string created_by = 8;
   google.protobuf.Timestamp created_timestamp = 9;
   string request_ip = 10;
   string environment_id = 11;
-  PaymentProviderId payment_provider_id = 12;
+  ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 12;
   IssuedItems purchased_items = 13;
   OrderRequestProviderProto payment_provider_data = 14;
   string listing_id = 15;
@@ -106,18 +106,12 @@ message FinalizeOrderRequest {
 
 message FinalizeOrderAsyncResponse {
   bool success = 1;
-  common.order.OrderState order_status = 2;
+  ivi.proto.common.order.OrderState order_status = 2;
   string payment_instrument_type = 3;
   string transaction_id = 4;
   IssuedItems pending_issued_items = 5;
   FraudResultProto fraud_score = 6;
   string processor_response = 7;
-}
-
-// Payment definitions
-enum PaymentProviderId {
-  BRAINTREE = 0;
-  BITPAY = 1;
 }
 
 message PaymentProviderProto {

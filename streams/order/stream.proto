@@ -7,20 +7,20 @@ import "google/protobuf/empty.proto";
 import "streams/common.proto";
 import "common/order/definition.proto";
 
-package streams.order;
+package ivi.rpc.streams.order;
 
 message OrderStatusUpdate {
   string order_id = 1;
-  common.order.OrderState order_state = 4;
+  ivi.proto.common.order.OrderState order_state = 4;
 }
 
 message OrderStatusConfirmRequest {
   string environment_id = 1;
   string order_id = 2;
-  common.order.OrderState order_state = 3;
+  ivi.proto.common.order.OrderState order_state = 3;
 }
 
 service OrderStream {
-  rpc OrderStatusStream(streams.Subscribe) returns (stream OrderStatusUpdate);
+  rpc OrderStatusStream(ivi.rpc.streams.Subscribe) returns (stream OrderStatusUpdate);
   rpc OrderStatusConfirmation(OrderStatusConfirmRequest) returns (google.protobuf.Empty);
 }

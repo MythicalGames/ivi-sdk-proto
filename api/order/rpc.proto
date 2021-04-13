@@ -3,12 +3,12 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.order";
 
-package api.order;
+package ivi.rpc.api.order;
 
 import "api/order/definition.proto";
 
 service OrderService {
-  rpc CreateOrder(api.order.CreateOrderRequest) returns (api.order.Order);
-  rpc GetOrder(api.order.GetOrderRequest) returns (api.order.Order);
-  rpc FinalizeOrder(api.order.FinalizeOrderRequest) returns (api.order.FinalizeOrderAsyncResponse);
+  rpc CreateOrder(ivi.proto.api.order.CreateOrderRequest) returns (ivi.proto.api.order.Order);
+  rpc GetOrder(ivi.proto.api.order.GetOrderRequest) returns (ivi.proto.api.order.Order);
+  rpc FinalizeOrder(ivi.proto.api.order.FinalizeOrderRequest) returns (ivi.proto.api.order.FinalizeOrderAsyncResponse);
 }

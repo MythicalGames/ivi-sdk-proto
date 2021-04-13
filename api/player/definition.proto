@@ -4,9 +4,9 @@ option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.player";
 
 import "common/player/definition.proto";
-import "common/common.proto";
+import "common/sort.proto";
 
-package api.player;
+package ivi.proto.api.player;
 
 // Player definitions
 message IVIPlayer {
@@ -15,7 +15,7 @@ message IVIPlayer {
   string display_name = 3;
   string sidechain_account_name = 4;
   string tracking_id = 5;
-  common.player.PlayerState player_state = 6;
+  ivi.proto.common.player.PlayerState player_state = 6;
   int64 created_timestamp = 7;
 }
 
@@ -33,7 +33,7 @@ message LinkPlayerRequest {
 
 message LinkPlayerAsyncResponse {
   string tracking_id = 1;
-  common.player.PlayerState player_state = 2;
+  ivi.proto.common.player.PlayerState player_state = 2;
 }
 
 // Get player calls
@@ -47,6 +47,6 @@ message GetPlayersRequest {
   string environment_id = 1;
   uint64 created_timestamp = 2;
   int32 page_size = 3;
-  common.SortOrder sort_order = 4;
+  ivi.proto.common.sort.SortOrder sort_order = 4;
 }
 

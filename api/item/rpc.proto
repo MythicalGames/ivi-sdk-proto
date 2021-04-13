@@ -5,14 +5,14 @@ option java_package = "games.mythical.ivi.sdk.proto.api.item";
 
 import "api/item/definition.proto";
 
-package api.item;
+package ivi.rpc.api.item;
 
 service ItemService {
-  rpc IssueItem(api.item.IssueItemRequest) returns (api.item.IssueItemStartedResponse);
-  rpc GetItem(api.item.GetItemRequest) returns (api.item.Item);
-  rpc GetItems(api.item.GetItemsRequest) returns (api.item.Items);
-  rpc GetItemsForPlayer(api.item.GetItemsForPlayerRequest) returns (api.item.Items);
-  rpc TransferItem(api.item.TransferItemRequest) returns (api.item.TransferItemStartedResponse);
-  rpc BurnItem(api.item.BurnItemRequest) returns (api.item.BurnItemStartedResponse);
-  rpc UpdateItemMetadata(api.item.UpdateItemMetadataRequest) returns (api.item.UpdateItemMetadataResponse);
+  rpc IssueItem(ivi.proto.api.item.IssueItemRequest) returns (ivi.proto.api.item.IssueItemStartedResponse);
+  rpc GetItem(ivi.proto.api.item.GetItemRequest) returns (ivi.proto.api.item.Item);
+  rpc GetItems(ivi.proto.api.item.GetItemsRequest) returns (ivi.proto.api.item.Items);
+  rpc GetItemsForPlayer(ivi.proto.api.item.GetItemsForPlayerRequest) returns (ivi.proto.api.item.Items);
+  rpc TransferItem(ivi.proto.api.item.TransferItemRequest) returns (ivi.proto.api.item.TransferItemStartedResponse);
+  rpc BurnItem(ivi.proto.api.item.BurnItemRequest) returns (ivi.proto.api.item.BurnItemStartedResponse);
+  rpc UpdateItemMetadata(ivi.proto.api.item.UpdateItemMetadataRequest) returns (ivi.proto.api.item.UpdateItemMetadataResponse);
 }

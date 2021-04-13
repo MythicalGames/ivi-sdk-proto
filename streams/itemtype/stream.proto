@@ -7,7 +7,7 @@ import "google/protobuf/empty.proto";
 import "streams/common.proto";
 import "common/itemtype/definition.proto";
 
-package streams.itemtype;
+package ivi.rpc.streams.itemtype;
 
 message ItemTypeStatusUpdate {
   string game_item_type_id = 1;
@@ -16,17 +16,17 @@ message ItemTypeStatusUpdate {
   string base_uri = 4;
   int32 issue_time_span = 5;
   string tracking_id = 6;
-  common.itemtype.ItemTypeState item_type_state = 7;
+  ivi.proto.common.itemtype.ItemTypeState item_type_state = 7;
 }
 
 message ItemTypeStatusConfirmRequest {
   string environment_id = 1;
   string game_item_type_id = 2;
   string tracking_id = 3;
-  common.itemtype.ItemTypeState item_type_state = 4;
+  ivi.proto.common.itemtype.ItemTypeState item_type_state = 4;
 }
 
 service ItemTypeStatusStream {
-  rpc ItemTypeStatusStream(streams.Subscribe) returns (stream ItemTypeStatusUpdate);
+  rpc ItemTypeStatusStream(ivi.rpc.streams.Subscribe) returns (stream ItemTypeStatusUpdate);
   rpc ItemTypeStatusConfirmation(ItemTypeStatusConfirmRequest) returns (google.protobuf.Empty);
 }

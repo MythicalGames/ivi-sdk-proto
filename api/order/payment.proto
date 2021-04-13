@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "games.mythical.ivi.sdk.proto.api.order";
+
+package ivi.proto.api.order.payment;
+
+// Payment definitions
+enum PaymentProviderId {
+  BRAINTREE = 0;
+  BITPAY = 1;
+}
