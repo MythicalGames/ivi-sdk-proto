@@ -3,11 +3,12 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.item";
 
-import "google/protobuf/struct.proto";
 import "common/item/definition.proto";
 import "common/common.proto";
+import "common/finalization.proto";
+import "common/sort.proto";
 
-package api.item;
+package ivi.proto.api.item;
 
 // Item definitions
 message Item {
@@ -21,8 +22,8 @@ message Item {
   string currency_base = 8;
   string metadata_uri = 9;
   string tracking_id = 10;
-  common.Metadata metadata = 11;
-  common.item.ItemState item_state = 12;
+  ivi.proto.common.Metadata metadata = 11;
+  ivi.proto.common.item.ItemState item_state = 12;
   int64 created_timestamp = 13;
   int64 updated_timestamp = 14;
 }
@@ -40,7 +41,7 @@ message IssueItemRequest {
   string game_item_type_id = 5;
   string amount_paid = 6;
   string currency = 7;
-  common.Metadata metadata = 8;
+  ivi.proto.common.Metadata metadata = 8;
   // optional
   string store_id = 9;
   string order_id = 10;
@@ -48,7 +49,7 @@ message IssueItemRequest {
 
 message IssueItemStartedResponse {
   string tracking_id = 1;
-  common.item.ItemState item_state = 2;
+  ivi.proto.common.item.ItemState item_state = 2;
 }
 
 // Get item calls
@@ -62,8 +63,8 @@ message GetItemsRequest {
   string environment_id = 1;
   uint64 created_timestamp = 2;
   int32 page_size = 3;
-  common.SortOrder sort_order = 4;
-  common.Finalized finalized = 5;
+  ivi.proto.common.sort.SortOrder sort_order = 4;
+  ivi.proto.common.finalization.Finalized finalized = 5;
 }
 
 message GetItemsForPlayerRequest {
@@ -74,7 +75,7 @@ message GetItemsForPlayerRequest {
 // Metadata calls
 message UpdateItemMetadata {
   string game_inventory_id = 1;
-  common.Metadata metadata = 2;
+  ivi.proto.common.Metadata metadata = 2;
 }
 
 message UpdateItemMetadataRequest {
@@ -95,7 +96,7 @@ message TransferItemRequest {
 
 message TransferItemStartedResponse {
   string tracking_id = 1;
-  common.item.ItemState item_state = 2;
+  ivi.proto.common.item.ItemState item_state = 2;
 }
 
 // Burn item call
@@ -106,5 +107,5 @@ message BurnItemRequest {
 
 message BurnItemStartedResponse {
   string tracking_id = 1;
-  common.item.ItemState item_state = 2;
+  ivi.proto.common.item.ItemState item_state = 2;
 }

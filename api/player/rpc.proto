@@ -5,10 +5,10 @@ option java_package = "games.mythical.ivi.sdk.proto.api.player";
 
 import "api/player/definition.proto";
 
-package api.player;
+package ivi.rpc.api.player;
 
 service PlayerService {
-  rpc LinkPlayer(api.player.LinkPlayerRequest) returns (api.player.LinkPlayerAsyncResponse);
-  rpc GetPlayers(api.player.GetPlayersRequest) returns (api.player.IVIPlayers);
-  rpc GetPlayer(api.player.GetPlayerRequest) returns (api.player.IVIPlayer);
+  rpc LinkPlayer(ivi.proto.api.player.LinkPlayerRequest) returns (ivi.proto.api.player.LinkPlayerAsyncResponse);
+  rpc GetPlayers(ivi.proto.api.player.GetPlayersRequest) returns (ivi.proto.api.player.IVIPlayers);
+  rpc GetPlayer(ivi.proto.api.player.GetPlayerRequest) returns (ivi.proto.api.player.IVIPlayer);
 }

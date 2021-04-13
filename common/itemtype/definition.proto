@@ -3,7 +3,7 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.common.itemtype";
 
-package common.itemtype;
+package ivi.proto.common.itemtype;
 
 enum ItemTypeState {
   PENDING_CREATE = 0;

@@ -5,22 +5,11 @@ option java_package = "games.mythical.ivi.sdk.proto.common";
 
 import "google/protobuf/struct.proto";
 
-package common;
-
-enum SortOrder {
-  ASC = 0;
-  DESC = 1;
-}
+package ivi.proto.common;
 
 message Metadata {
   string name = 1;
   string description = 2;
   string image = 3;
   google.protobuf.Struct properties = 4;
-}
-
-enum Finalized {
-  ALL = 0;
-  YES = 1;
-  NO = 2;
 }

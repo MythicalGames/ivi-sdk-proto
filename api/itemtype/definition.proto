@@ -6,7 +6,7 @@ option java_package = "games.mythical.ivi.sdk.proto.api.itemtype";
 import "common/itemtype/definition.proto";
 import "common/common.proto";
 
-package api.itemtype;
+package ivi.proto.api.itemtype;
 
 // Item type definitions
 message ItemType {
@@ -26,10 +26,10 @@ message ItemType {
     string base_uri = 14;
     string tracking_id = 15;
     repeated string agreement_ids = 16;
-    common.itemtype.ItemTypeState item_type_state = 17;
+    ivi.proto.common.itemtype.ItemTypeState item_type_state = 17;
     int64 created_timestamp = 18;
     int64 updated_timestamp = 19;
-    common.Metadata metadata = 20;
+    ivi.proto.common.Metadata metadata = 20;
 }
 
 message ItemTypes {
@@ -47,14 +47,14 @@ message CreateItemTypeRequest {
     bool transferable = 7;
     bool sellable = 8;
     repeated string agreement_ids = 9;
-    common.Metadata metadata = 10;
+    ivi.proto.common.Metadata metadata = 10;
     string game_item_type_id = 11;
 }
 
 message CreateItemAsyncResponse {
     string tracking_id = 1;
     string game_item_type_id = 2;
-    common.itemtype.ItemTypeState item_type_state = 3;
+    ivi.proto.common.itemtype.ItemTypeState item_type_state = 3;
 }
 
 // Get item type calls
@@ -71,12 +71,12 @@ message FreezeItemTypeRequest {
 
 message FreezeItemTypeAsyncResponse {
     string tracking_id = 1;
-    common.itemtype.ItemTypeState item_type_state = 2;
+    ivi.proto.common.itemtype.ItemTypeState item_type_state = 2;
 }
 
 // Update item type metadata
 message UpdateItemTypeMetadataPayload {
     string environment_id = 1;
     string game_item_type_id = 2;
-    common.Metadata metadata = 3;
+    ivi.proto.common.Metadata metadata = 3;
 }
