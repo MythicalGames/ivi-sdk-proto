@@ -25,7 +25,7 @@ message Order {
   Address address = 6;
   google.protobuf.Struct metadata = 7;
   string created_by = 8;
-  uint64 created_timestamp = 9;
+  int64 created_timestamp = 9;
   string request_ip = 10;
   string environment_id = 11;
   ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 12;
