@@ -3,10 +3,10 @@ syntax = "proto3";
 option java_multiple_files = true;
 option java_package = "games.mythical.ivi.sdk.proto.api.payment";
 
-package api.payment;
+package ivi.rpc.api.payment;
 
 import "api/payment/definition.proto";
 
 service PaymentService {
-  rpc GenerateClientToken(api.payment.CreateTokenRequest) returns (api.payment.Token);
+  rpc GenerateClientToken(ivi.proto.api.payment.CreateTokenRequest) returns (ivi.proto.api.payment.Token);
 }
