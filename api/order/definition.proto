@@ -16,6 +16,19 @@ message IssuedItems {
   repeated IssuedItem purchased_items = 1;
 }
 
+message ItemTypeOrders {
+  repeated ItemTypeOrder purchased_items = 1;
+}
+
+message ItemTypeOrder {
+  repeated string game_inventory_ids = 1;
+  string item_name = 2;
+  string game_item_type_id = 3;
+  string amount_paid = 4;
+  string currency = 5;
+  ivi.proto.common.Metadata metadata = 6;
+}
+
 message Order {
   string order_id = 1;
   string buyer_player_id = 2;
@@ -30,7 +43,7 @@ message Order {
   string environment_id = 11;
   ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 12;
   oneof line_items {
-    IssuedItems purchased_items = 13;
+    ItemTypeOrders purchased_items = 13;
     string listing_id = 15;
   }
   PaymentProviderOrderProto payment_provider_data = 14;
@@ -69,7 +82,7 @@ message CreateOrderRequest {
   ivi.proto.api.order.payment.PaymentProviderId payment_provider_id = 8;
   OrderRequestProviderProto payment_provider_data = 9;
   oneof line_items {
-    IssuedItems purchased_items = 10;
+    ItemTypeOrders purchased_items = 10;
     string listing_id = 11;
   }
   string store_id = 12;
