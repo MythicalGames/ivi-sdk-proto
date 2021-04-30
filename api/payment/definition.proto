@@ -13,7 +13,7 @@ message CreateTokenRequest {
 }
 
 message BraintreeTokenRequest {
-  string customer_id = 1;
+  string player_id = 1;
 }
 
 message Token {
