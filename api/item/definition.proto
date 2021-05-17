@@ -45,6 +45,7 @@ message IssueItemRequest {
   // optional
   string store_id = 9;
   string order_id = 10;
+  string request_ip = 11;
 }
 
 message IssueItemStartedResponse {
