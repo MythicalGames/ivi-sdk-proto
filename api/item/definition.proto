@@ -66,6 +66,7 @@ message GetItemsRequest {
   int32 page_size = 3;
   ivi.proto.common.sort.SortOrder sort_order = 4;
   ivi.proto.common.finalization.Finalized finalized = 5;
+  string token_name = 6;
 }
 
 message GetItemsForPlayerRequest {
