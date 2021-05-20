@@ -13,4 +13,5 @@ enum OrderState {
   DECLINED = 4;
   FAILED = 5;
   PAID = 6;
+  EXPIRED = 7;
 }
