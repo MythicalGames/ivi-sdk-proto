@@ -13,5 +13,4 @@ enum ItemTypeState {
   SOLD_OUT = 4;
   EXPIRED = 5;
   FAILED = 6;
-  UPDATED_METADATA = 7;
 }
